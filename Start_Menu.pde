@@ -14,7 +14,7 @@ String mapname = "No map selected", mapauthor = "";
 void startmenu() {
 
   if (millis() >= 0 && millis() < 2500) {
-
+//display menu
     background(bgr, bgg, bgb);
     fill(0, bgalpha);
     noStroke();
@@ -28,7 +28,7 @@ void startmenu() {
     textalpha = textalpha + 4;
     bgalpha-= 2;
   } else {
-
+//display sliders for customization
     background(0, 100, 200); 
     fill(0);
     textSize(50);
@@ -40,7 +40,7 @@ void startmenu() {
     text("Pr.osu! menu", 600, 60);
 
     mapselect();
-
+//display play button
     fill(0, 255, 0);
     stroke(0);
     rect(650, 750, 300, 100);
@@ -72,7 +72,7 @@ void mouseClicked() {
     nofailcount++;
   }
 }
-
+//turn on noFail, meaning the player cant reach 0 health
 void nofailbutton() {
 
   fill(255);
@@ -94,6 +94,7 @@ void nofailbutton() {
   text("Fail", 510, 755);
 }
 
+//display maps to be selected
 void mapselect() {
 
   fill(255);
@@ -131,7 +132,7 @@ void mapselect() {
     text("Mapped by - " + mapauthor, 500, 630);
   }
 }
-
+//function to display each slider
 void slider() {
 
   //slider color for circles
