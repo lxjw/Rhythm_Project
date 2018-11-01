@@ -1,5 +1,5 @@
 import processing.sound.*;
-
+//import sounds files
 SoundFile sakebe;
 SoundFile notitle;
 SoundFile miracle;
@@ -23,7 +23,7 @@ boolean mapend = false, firstnote = false, lastnote = false, nofail = false;
 PFont Aller;
 
 void setup() {
-
+//set screen size
   size(1600, 900);
   strokeWeight(2);
   frameRate(60);
@@ -55,7 +55,7 @@ void setup() {
 }
 
 void draw() {
-
+//display start menu first
   if (start == true) {
     startmenu();
   } else  if (health <= 0 && nofail == false || mapend == true) {
@@ -71,7 +71,7 @@ void draw() {
     textSize(60);
     text("Score: " + score, 10, 55);
     text("Combo: " + combo, 10, height - 55);
-
+//track health
     totalpoints = (hit300count*300 + hit100count*100 + hit50count*50);
     totalhits = (hit300count + hit100count + hit50count + misscount)*300;
     if (totalpoints > 0 || totalhits > 0) {
@@ -95,7 +95,7 @@ void draw() {
     if (firstnote == true && lastnote == false) {
       health = health - (maxhealth * .004);
     }
-
+//display health bar
     fill(255, 0, 0);
     noStroke();
     rect(7, height - 40, health, 30);
@@ -109,7 +109,7 @@ void draw() {
     noFill();
     stroke(2);
     rect(7, height - 40, maxhealth, 30); 
-
+//display when noFail is turned on
     if (nofail == true) {
       fill(255);
       stroke(0);
@@ -126,7 +126,7 @@ void draw() {
         health = 10;
       }
     }
-
+//run seclected map
     if (mapname == "Sakebe (Hard)") {
       sakebe();
     } else if (mapname == "No Title (Medium)") {
@@ -141,12 +141,10 @@ void draw() {
     }
 
 
-    // noStroke();
-    //fill(255, 0, 0);
-    //  ellipse(mouseX, mouseY, 30, 30);
   }
 }
 
+//draw approach circle function
 void approachCircle(int x, int y, int circleX, int circleY) {
 
   noFill();
@@ -154,13 +152,14 @@ void approachCircle(int x, int y, int circleX, int circleY) {
   ellipse(x, y, 260 - circleX, 260 - circleY);
 }
 
+//draw hit circle function
 void hitCircle(int x, int y) {
 
   fill(circler, circleg, circleb);
   strokeWeight(2);
   ellipse(x, y, 120, 120);
 }
-
+//check if the mouse is on the hit circle
 boolean onCircle(int x, int y) {
 
   if (mouseX-5 <= x + 60 && mouseX+5 >= x - 60 && mouseY+5 >= y - 60 && mouseY-5 <= y + 60) {
@@ -170,6 +169,7 @@ boolean onCircle(int x, int y) {
   }
 }
 
+//check the accuracy based on the timing when the circle is hit
 int hitAccuracy(int x, int y) {
 
   int numscore = 0;
@@ -221,7 +221,7 @@ int hitAccuracy(int x, int y) {
 
   return numscore;
 }
-
+//display the current score
 boolean scoreDisplay( int x, int y, int time, int scorevalue, boolean display) {
 
   if (scorevalue == 300) {
